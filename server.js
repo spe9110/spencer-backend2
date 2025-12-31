@@ -38,10 +38,11 @@ app.post('/contact', (req, res) => {
     });
 
     const mailOptions = {
-        from: `${values.firstName} <${values.email}>`,
+        from: `${USER}`,
         to: USER,
-        subject: values.object,
+        subject: `New message from ${values.firstName} about ${values.object}`,,
         text: values.comment,
+        replyTo: values.email,
     };
     
     transporter.sendMail(mailOptions, (error, info) => {
